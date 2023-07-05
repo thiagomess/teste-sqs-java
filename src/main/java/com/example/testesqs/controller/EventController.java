@@ -10,6 +10,9 @@ import com.example.testesqs.dto.RequestDTO;
 import com.example.testesqs.response.ResponseDTO;
 import com.example.testesqs.service.EventMessageSQSService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RequestMapping(path = "/teste/v1/register")
 @RestController
 public class EventController {
@@ -22,7 +25,7 @@ public class EventController {
 
 	@PostMapping
 	public ResponseEntity<ResponseDTO> createMessage(@RequestBody RequestDTO dto){
-		
+		log.info("controller");
 		ResponseDTO sendMessage = eventMessageSQSService.sendMessage(dto);
 		return ResponseEntity.ok(sendMessage);
 	}
